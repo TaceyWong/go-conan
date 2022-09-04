@@ -4,6 +4,7 @@ import (
 	"log"
 	"os"
 
+	cs "github.com/mitchellh/colorstring"
 	"github.com/urfave/cli/v2"
 )
 
@@ -17,10 +18,18 @@ const (
 /**
  * Entry point of `can`.
  */
+
+func init() {
+	cli.AppHelpTemplate = AppHelpTemplate
+	cli.CommandHelpTemplate = CommandHelpTemplate
+	cli.SubcommandHelpTemplate = SubcommandHelpTemplate
+	// cli.MarkdownDocTemplate = MarkdownDocTemplate
+}
+
 func main() {
 	app := &cli.App{
-		Name:    "can",
-		Usage:   "C/C++ package manager (a clone of conan).",
+		Name:    "gocona",
+		Usage:   cs.Color("C/C++ package manager (a clone of [red][underline]conan[reset])."),
 		Version: Version,
 		Authors: []*cli.Author{{Name: "Tacey Wong",
 			Email: "xinyong.w@gmail.com"}},
