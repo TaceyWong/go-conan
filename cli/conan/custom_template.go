@@ -8,7 +8,7 @@ var AppHelpTemplate = cs.Color(`
 [light_red][bold]{{$v := offset .Name 6}}{{wrap .Name 3}}[reset]{{if .Usage}} - [light_gray]{{wrap .Usage $v}}[reset]{{end}}
 
 [light_green]使用方法[reset]:
-   [light_gray]{{if .UsageText}}{{wrap .UsageText 3}}{{else}}{{.HelpName}} {{if .VisibleFlags}}[全局选项]{{end}}{{if .Commands}} 命令 [命令选项]{{end}} {{if .ArgsUsage}}{{.ArgsUsage}}{{else}}[参数...]{{end}}{{end}}[reset]{{if .Version}}{{if not .HideVersion}}
+   [light_gray]{{if .UsageText}}{{.HelpName}} {{wrap .UsageText 3}}{{else}}{{.HelpName}} {{if .VisibleFlags}}[全局选项]{{end}}{{if .Commands}} 命令 [命令选项]{{end}} {{if .ArgsUsage}}{{.ArgsUsage}}{{else}}[参数...]{{end}}{{end}}[reset]{{if .Version}}{{if not .HideVersion}}
 [light_green]版本[reset]:
    [red]{{.Version}}{{end}}{{end}}[reset]{{if .Description}}
 [light_green]描述[reset]:
@@ -37,7 +37,7 @@ var CommandHelpTemplate = cs.Color(`
 {{$v := offset .HelpName 6}}{{wrap .HelpName 3}}{{if .Usage}} - {{wrap .Usage $v}}{{end}}
 
 [light_green]使用方法[reset]:
-   {{if .UsageText}}{{wrap .HelpName 3}} {{.UsageText}}{{else}}{{.HelpName}}{{if .VisibleFlags}} [命令选项]{{end}} {{if .ArgsUsage}}{{.ArgsUsage}}{{else}}[参数...]{{end}}{{end}}{{if .Category}}
+   [light_gray]{{if .UsageText}}{{.HelpName}} {{wrap .UsageText 3}}{{else}}{{.HelpName}} {{if .VisibleFlags}} [命令选项]{{end}} {{if .ArgsUsage}}{{.ArgsUsage}}{{else}}[参数...]{{end}}{{end}}{{if .Category}}
 [light_green]分类[reset]:
    {{.Category}}{{end}}{{if .Description}}
 [light_green]描述[reset]:
@@ -55,7 +55,7 @@ var SubcommandHelpTemplate = cs.Color(`
 [light_blue]{{.HelpName}}[reset] - [light_gray]{{.Usage}}[reset]
 
 [light_green]使用方法[reset]:
-   {{if .UsageText}}{{wrap .UsageText 3}}{{else}}{{.HelpName}} 命令{{if .VisibleFlags}} [命令选项]{{end}} {{if .ArgsUsage}}{{.ArgsUsage}}{{else}}[参数...]{{end}}{{end}}{{if .Description}}
+   {{if .UsageText}}{{.HelpName}} {{wrap .UsageText 3}}{{else}}{{.HelpName}} 命令{{if .VisibleFlags}} [命令选项]{{end}} {{if .ArgsUsage}}{{.ArgsUsage}}{{else}}[参数...]{{end}}{{end}}{{if .Description}}
 [light_green]描述[reset]:
    {{wrap .Description 3}}{{end}}
 [light_green]命令[reset]:{{range .VisibleCategories}}{{if .Name}}

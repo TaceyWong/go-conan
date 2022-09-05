@@ -42,7 +42,28 @@ found, it can be built from sources using the '--build' option. When
 the package is installed, Conan will write the files for the specified
 generators.`,
 	Flags: []cli.Flag{
-		
+		&cli.StringFlag{
+			Name: "generator", Aliases: []string{"g"},
+			Usage: "`Generator`s to use",
+		},
+		&cli.PathFlag{
+			Name: "install-folder", Aliases: []string{"if"},
+			Usage: "Use this directory as the `directory` where to put the generatorfiles. e.g.,conaninfo/conanbuildinfo.txt",
+		},
+		&cli.PathFlag{
+			Name: "output-folder", Aliases: []string{"of"},
+			Usage: "The root `output folder` for generated and build files",
+		},
+		&cli.PathFlag{
+			Name: "manifests", Aliases: []string{"m"},
+			Usage: "Install dependencies `manifests` in folder for later verify.",
+			Value: ".conan_manifests",
+		},
+		&cli.PathFlag{
+			Name: "manifests-interactive", Aliases: []string{"mi"},
+			Usage: "Install dependencies `manifests` in folder for later verify, asking user for confirmation.",
+			Value: ".conan_manifests",
+		},
 	},
 }
 
